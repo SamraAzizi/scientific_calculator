@@ -34,3 +34,8 @@ public:
 
         setLayout(layout);
     }
+private:
+    void handleButtonPress(const QString &buttonText, QLineEdit *display) {
+        if (buttonText == "=") {
+            QString expression = display->text();
+            QRegExp regex("[^0-9*+-/().,^sincostan]+");
