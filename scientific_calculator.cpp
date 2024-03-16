@@ -39,3 +39,8 @@ private:
         if (buttonText == "=") {
             QString expression = display->text();
             QRegExp regex("[^0-9*+-/().,^sincostan]+");
+             if (regex.indexIn(expression) == -1) {
+                expression.replace("sin", "qSin").replace("cos", "qCos").replace("tan", "qTan");
+                double result = qExp(expression.toUtf8().constData());
+                display->setText(QString::number(result));
+            }
