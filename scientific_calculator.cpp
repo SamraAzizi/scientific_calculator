@@ -22,3 +22,15 @@ public:
             {"Clear", "Clear All", "Backspace", "(", ")"}
         };
 
+ for (int i = 0; i < 5; ++i) {
+            for (int j = 0; j < 5; ++j) {
+                QPushButton *button = new QPushButton(buttons[i][j]);
+                layout->addWidget(button, i + 1, j);
+                connect(button, &QPushButton::clicked, this, [=]() {
+                    handleButtonPress(button->text(), display);
+                });
+            }
+        }
+
+        setLayout(layout);
+    }
