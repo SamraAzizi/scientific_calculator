@@ -35,29 +35,3 @@ void clear() {
     operator = '\0';
 }
 
-void button_clicked(GtkWidget *widget, gpointer data) {
-    char *label = gtk_button_get_label(GTK_BUTTON(widget));
-    char *display_text = gtk_label_get_text(GTK_LABEL(data));
-    char buffer[32];
-
-    if (label[0] >= '0' && label[0] <= '9') {
-        strcat(display_text, label);
-    } else if (label[0] == 'C') {
-        strcpy(display_text, "");
-        clear();
-    } else if (label[0] == '=') {
-        num2 = atof(display_text);
-        calculate();
-        sprintf(buffer, "%.2f", result);
-        strcpy(display_text, buffer);
-        clear();
-    } else {
-        num1 = atof(display_text);
-        operator = label[0];
-        strcpy(display_text, "");
-    }
-
-    gtk_label_set_text(GTK_LABEL(data), display_text);
-}
-
-
